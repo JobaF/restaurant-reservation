@@ -1,0 +1,98 @@
+.react-calendar {
+	width: 450px;
+	max-width: 100%;
+	background: white;
+	border-radius: 15px;
+	border: 1px solid rgb(209 213 219);
+	font-family: Manrope, Helvetica, sans-serif;
+	line-height: 1.125em;
+}
+.react-calendar--doubleView {
+	width: 700px;
+}
+.react-calendar--doubleView .react-calendar__viewContainer {
+	display: flex;
+	margin: -0.5em;
+}
+.react-calendar--doubleView .react-calendar__viewContainer > * {
+	width: 50%;
+	margin: 0.5em;
+}
+.react-calendar,
+.react-calendar *,
+.react-calendar *:before,
+.react-calendar *:after {
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+/* Custom Navigation Styles */
+@media screen and (max-width: 500px) {
+	.react-calendar__navigation__prev2-button,
+	.react-calendar__navigation__prev-button {
+		display: none;
+	}
+	.react-calendar__navigation__label {
+		padding-left: 1rem;
+		text-align: left;
+	}
+}
+
+.react-calendar button {
+	margin: 0;
+	border: 0;
+	outline: none;
+}
+.react-calendar button:enabled:hover {
+	cursor: pointer;
+}
+.react-calendar__navigation {
+	display: flex;
+	height: 44px;
+	margin-bottom: 1em;
+}
+.react-calendar__navigation button {
+	min-width: 44px;
+	background: none;
+}
+.react-calendar__navigation button:disabled {
+	visibility: hidden;
+	background-color: #f0f0f0;
+}
+.react-calendar__navigation button:enabled:hover,
+.react-calendar__navigation button:enabled:focus {
+	background-color: #e6e6e6;
+}
+.react-calendar__month-view__weekdays {
+	color: #4f46e5;
+	text-align: center;
+	text-transform: uppercase;
+	font-weight: 700;
+	font-size: 0.8em;
+}
+/* Each day should be round when hovered */
+.react-calendar__month-view__days__day {
+	padding: 5px;
+	background-clip: content-box !important;
+	border-radius: 15px !important;
+}
+
+.react-calendar__navigation__label__labelText {
+	font-weight: 500;
+	font-size: 1.05em;
+}
+.react-calendar__navigation__label {
+	pointer-events: none;
+}
+
+.react-calendar__navigation__arrow {
+	background-color: #fff;
+	padding: 7px;
+	background-clip: content-box !important;
+	border-radius: 50px;
+	font-size: 1.25em;
+}
+.react-calendar__navigation__arrow:hover {
+	background-color: rgb(107 114 128);
+}
