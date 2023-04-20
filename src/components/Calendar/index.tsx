@@ -1,6 +1,11 @@
 import { FC, useState } from "react"
 import ReactCalendar from "react-calendar"
-import { add } from "date-fns"
+import { add, format } from "date-fns"
+import {
+	INTERVAL,
+	STORE_CLOSING_TIME,
+	STORE_OPENING_TIME,
+} from "~/constants/config"
 
 interface indexProps {}
 
@@ -15,14 +20,14 @@ const index: FC<indexProps> = ({}) => {
 		dateTime: null,
 	})
 
-	const getTime = () => {
+	const getTimes = () => {
 		if (!date.justDate) return
 
 		const { justDate } = date
 
-		const beginning = add(justDate, { hours: 9 })
-		const end = add(justDate, { hours: 17 })
-		const interval = 30 // in minutes
+		const beginning = add(justDate, { hours: STORE_OPENING_TIME })
+		const end = add(justDate, { hours: STORE_CLOSING_TIME })
+		const interval = INTERVAL // in minutes
 
 		const times = []
 
@@ -32,10 +37,22 @@ const index: FC<indexProps> = ({}) => {
 		return times
 	}
 
+	const times = getTimes()
+	console.log(date.dateTime)
 	return (
 		<div className="flex h-screen flex-col items-center justify-center">
 			{date.justDate ? (
-				<div className="flex gap-4"></div>
+				<div className="grid grid-cols-4 gap-4">
+					{times?.map((time, i) => (
+						<div key={`time-${i}`} className=" rounded-sm bg-gray-100 p-2">
+							<button
+								onClick={() => setDate((prev) => ({ ...prev, dateTime: time }))}
+							>
+								{format(time, "kk:mm")}
+							</button>
+						</div>
+					))}
+				</div>
 			) : (
 				<ReactCalendar
 					minDate={new Date()}
